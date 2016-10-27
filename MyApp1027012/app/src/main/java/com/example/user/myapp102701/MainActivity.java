@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
         act.setThreshold(1);
         act.setAdapter(adapter);
     }
-    public void click1(View v)
+
+    public void click2(View v)
     {
         Toast.makeText(MainActivity.this, act.getText().toString(),
                 Toast.LENGTH_SHORT).show();
