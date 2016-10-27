@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     int tmp, ch=1;
+    boolean chks[] = new boolean[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +105,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        builder.show();
+    }
+    public void click5(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("多選一");
+        builder.setMultiChoiceItems(R.array.drinks, chks, new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+            }
+        });
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String[] str = getResources().getStringArray(R.array.drinks);
+                TextView tv3 = (TextView) findViewById(R.id.textView3);
+                StringBuilder sb = new StringBuilder();
+                for (int i=0;i<=3;i++)
+                {
+                    if (chks[i])
+                    {
+                        sb.append(str[i] + ",");
+                    }
+                }
+
+                tv3.setText(sb);
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
         builder.show();
     }
 }
