@@ -76,6 +76,34 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+    public void click4(View v)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("多選一");
+
+        builder.setItems(R.array.drinks, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String[] str = getResources().getStringArray(R.array.drinks);
+                TextView tv2 = (TextView) findViewById(R.id.textView2);
+                tv2.setText(str[which]);
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
         builder.show();
     }
 }
